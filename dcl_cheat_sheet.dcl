@@ -18,6 +18,7 @@ DCL_CHEAT_SHEET : dialog {
         label = "Radio button two";
       }
     }
+    
     :boxed_column {
       label = "Boxed &Column";
       :popup_list {
@@ -65,7 +66,7 @@ DCL_CHEAT_SHEET : dialog {
     :edit_box {
       label = "Input Example: ";
       key = "name";
-      mnemonic = "E";
+      mnemonic = "x";
       alignment = centered;
       edit_limit = 15;
       edit_width = 15;
@@ -103,6 +104,46 @@ DCL_CHEAT_SHEET : dialog {
       width = 20;
     }
 
+    
+
+    :list_box {
+      label = "List Box";
+      key = "listbox";
+      height = 5;
+      width = 25;
+      multiple_select = true;
+      fixed_width_font = true;
+      value = 0; // Default value
+    }
+
     // ok_cancel;
+  }
+
+  :row {
+    // children_fixed_width = 10;
+    :radio_row {
+      label = "Radio row";
+      key = "radiorow";
+      :radio_button {
+        label = "1";
+        key = "choice1";
+      }
+      :radio_button {
+        label = "2";
+        key = "choice2";
+      }
+      :radio_button {
+        label = "3";
+        key = "choice3";
+      }
+    }
+
+    :popup_list {
+      key = "popuplist";
+      label = "Select Item";
+      // fixed_width_font = true;
+      width = 30;
+      value = "";
+    }
   }
 }

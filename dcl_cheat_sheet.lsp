@@ -13,6 +13,11 @@
       (add_list "Option2")
       (end_list)
 
+      (setq popuplist (list "Electrical" "Structural" "Plumbing" "Foundation"))
+      (start_list "popuplist" 3)
+      (mapcar 'add_list popuplist)
+      (end_list)
+
       (start_image "img")
       (fill_image 0 0 (dimx_tile "img") (dimy_tile "img") 5)
       (end_image)
