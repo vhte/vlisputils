@@ -13,15 +13,24 @@
       (add_list "Option2")
       (end_list)
 
-      (setq popuplist (list "Electrical" "Structural" "Plumbing" "Foundation"))
-      (start_list "popuplist" 3)
-      (mapcar 'add_list popuplist)
+      (setq llist (list "first line" "second line" "third line"))
+
+      (start_list "listbox" 3) ;; 3 deletes old list and create new one
+      (mapcar 'add_list llist) ;; Font is weird (?)
       (end_list)
+      
+      (start_list "popuplist" 2) ;; 2 appends a new list entry
+      (mapcar 'add_list llist)
+      (end_list)
+
+      
+      
 
       (start_image "img")
       (fill_image 0 0 (dimx_tile "img") (dimy_tile "img") 5)
       (end_image)
 
+      ;; RESULT
       (setq result (start_dialog))
       (unload_dialog dcl_id)
 

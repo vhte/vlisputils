@@ -145,5 +145,6 @@ DCL_CHEAT_SHEET : dialog {
       width = 30;
       value = "";
     }
+
   }
 }
