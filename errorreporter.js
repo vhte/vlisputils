@@ -1,3 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////////
+// TITLE:    ERROR REPORT
+// PURPOSE:  EXTRACT INFORMATION FROM AUTOCAD CURRENT SESSION AND OPEN THE ERROR
+//           REPORT FILE WITH SOME PARAMETERS
+// WRITTEN:  VICTOR TORRES - TALK@VICTORTORR.ES || HTTPS://GITHUB.COM/VHTE/VLISPUTILS
+// CREATION: 2019-01-23
+// MANUAL:   https://df-prod.autocad360.com/jsapi/v3/docs/contents.html
+// REVISIONS:
+////////////////////////////////////////////////////////////////////////////////////
+
 //https://df-prod.autocad360.com/jsapi/v3/docs/Acad_Application_showHTMLDialog@url@options.html
 var options = new Object();
 options["modal"] = true;

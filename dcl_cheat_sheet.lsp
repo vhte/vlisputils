@@ -1,12 +1,17 @@
-;;; dcl_cheat_sheet.lsp
-;;; Author: Victor Torres <talk@victortorr.es>
-;;;
-;;; A complete example of DCL functionalities and common actions with its elements
-;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TITLE:    AutoLISP DCL CHEAT SHEET
+;; PURPOSE:  A COMPLETE EXAMPLE OF DCL FUNCTIONALITIES AND COMMON ACTIONS WITH ITS
+;;           ELEMENTS
+;; WRITTEN:  VICTOR TORRES - TALK@VICTORTORR.ES || HTTPS://GITHUB.COM/VHTE/VLISPUTILS
+;; CREATION: 2019-01-23
+;; MANUAL:   https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2016/ENU/AutoCAD-AutoLISP/files/GUID-F4A63A70-EB72-4F7D-A90C-3C5ABD6864A9-htm.html
+;; REVISIONS:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;; FUNCTION DESCRIPTION
 ;;; C:DCLCS  Loads a .dcl file and set many actions for interaction
 ;;; SET-TEXT Set a text on a dcl tile as action
-;;;
+
 (defun C:DCLCS( / dcl_id llist)
   (setq dcl_id (load_dialog "C:/Users/Victor Torres/Documents/GitHub/vlisputils/dcl_cheat_sheet.dcl"))
   (if (not (new_dialog "DCL_CHEAT_SHEET" dcl_id))
