@@ -1,4 +1,8 @@
-// This is a comment
+// dcl_cheat_sheet.dcl
+// Author: Victor Torres <talk@victortorr.es>
+//
+// A DCL file with many tiles
+//
 DCL_CHEAT_SHEET : dialog {
   label = "DCL Cheat Sheet";
   :row {
@@ -82,29 +86,27 @@ DCL_CHEAT_SHEET : dialog {
     }
 
     :button {
-      key = "accept";
+      key = "accept1";
       label = "&Ok"; // Shortcut "O"
       //is_default = true;
       fixed_width = true;
       alignment = centered;
     }
     :cancel_button {
-      key = "cancel";
+      key = "cancel1";
       label = "&Cancel";
       fixed_width = true;
       alignment = centered;
       is_cancel = true;
     }
     :button {
-      key = "enableerror";
-      label = "Enable &Error";
+      key = "settext";
+      label = "Set &Text";
       fixed_width = true;
     }
     :errtile {
       width = 20;
     }
-
-    
 
     :list_box {
       label = "List Box";
@@ -147,4 +149,7 @@ DCL_CHEAT_SHEET : dialog {
     }
 
   }
+
+  // IDS ACCEPT CANCEL AND HELP
+  ok_cancel_help;
 }

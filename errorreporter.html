@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title>Error Report</title>
+		<link rel="shortcut icon" href="https://github.githubassets.com/favicon.ico"">
+		<script src="jquery-3.3.1.min.js"></script>
+		<script>
+			$( document ).ready(function() {
+				console.log( "ready!" );
+				$("#report").on("submit", function(e){
+					e.preventDefault();
+					
+					// Get the variables
+					var email = $("#email").val();
+					var desc = $("#desc").val();
+					
+					// From this part, send data via ajax
+					alert("Form sent.");
+				});
+			});
+		</script>
+		<style>
+			body {
+				font-family:Arial;
+				background:#eee;
+			}
+			h1,h2,h3,h4,h5 {
+				letter-spacing:-1.2px;
+			}
+			
+			#logo {
+				text-align:center;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Text here is currently based on AutoCAD's error report -->
+		<h1>A software problem has caused this software to stop unexpectedly.</h1>
+		
+		<h2>We apologize for the inconvenience. An error report has been generated.</h2>
+		<h3>Please click Send Report to help us analyze the cause of the problem.</h3>
+		<a href="https://github.com/vhte/vlisputils" target="_blank">Learn more about how error reports are used</a>
+		
+		<p>Details</p>
+		<p>Providing a step-by-step description of what you were doing when the problem occurred will help us resolve the issue:
+		<form method="post" action="" id="report" name="report">
+			<span>Email: </span><input type="email" name="email" id="email" required="true"><br>
+			<span>Description: </span><textarea rows="6" cols="50" id="desc" name="desc" required></textarea>
+		
+			<hr>
+		
+			<!-- <button>View Report Details</button> -->
+			<button type="submit">Send Report</button>
+		</form>
+		
+	</body>
+</html>
