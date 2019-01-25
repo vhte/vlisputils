@@ -5,7 +5,6 @@
 ;; WRITTEN:  VICTOR TORRES - TALK@VICTORTORR.ES || HTTPS://GITHUB.COM/VHTE/VLISPUTILS
 ;; CREATION: 2016-09-10
 ;; MANUAL:   https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2015/ENU/AutoCAD-AutoLISP/files/GUID-5784FC6F-82DD-4459-879B-6EC3BD5E88D1-htm.html
-;; REVISIONS:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; SET A GLOBAL VARIABLE FOR THE APPLICATION, WHICH WILL LOAD THIS FILE
