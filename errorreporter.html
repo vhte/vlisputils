@@ -5,9 +5,23 @@
 		<title>Error Report</title>
 		<link rel="shortcut icon" href="https://github.githubassets.com/favicon.ico"">
 		<script src="jquery-3.3.1.min.js"></script>
+
 		<script>
 			$( document ).ready(function() {
-				console.log( "ready!" );
+				// The use of URLSearchParams was the best choice here but looks like autocad uses an old IE version.
+				// Populate querystring vars
+				/*var urlParams = new URLSearchParams(window.location.search);
+				if(urlParams.has("error")) 
+					$("#error").html(urlParams.get("error"));
+				else
+					$("#error").html("undefined");
+				*/
+				var urlParams = document.location.search.split("error=");
+				if(urlParams[1])
+					$("#error").html(decodeURIComponent(urlParams[1]));
+				else
+					$("#error").html("undefined");
+				
 				$("#report").on("submit", function(e){
 					e.preventDefault();
 					
@@ -42,7 +56,7 @@
 		<h3>Please click Send Report to help us analyze the cause of the problem.</h3>
 		<a href="https://github.com/vhte/vlisputils" target="_blank">Learn more about how error reports are used</a>
 		
-		<p>Details</p>
+		<p>Error: <strong id="error"></strong></p>
 		<p>Providing a step-by-step description of what you were doing when the problem occurred will help us resolve the issue:
 		<form method="post" action="" id="report" name="report">
 			<span>Email: </span><input type="email" name="email" id="email" required="true"><br>

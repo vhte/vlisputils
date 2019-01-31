@@ -21,4 +21,8 @@ options["maxWidth"]=500;
 options["maxHeight"]=500;
 //options["x"]=100;
 //options["y"]=100;
-Acad.Application.showHTMLDialog("C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.html?a=" + Math.random(), options);
+var error = document.currentScript.src.split("error=")[1];
+if(!error)
+	error = "undefined";
+
+Acad.Application.showHTMLDialog("C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.html?r=" + Math.random() + "&error=" + error, options);

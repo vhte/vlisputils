@@ -15,17 +15,27 @@
   ;; LOAD ACTIVEX SUPPORT
   (vl-load-com)
   
-  (setq rep "***** SYSTEM VARIABLES AND ADMINISTRATION *****\n\n")
-  (setq rep (strcat rep "\nScreen resolution: " (screen-resolution)))
+  (setq rep (strcat "***** SYSTEM VARIABLES AND ADMINISTRATION *****\n\n"
+                    "\nWindows and user:" (windows-data)
+                    "\nScreen resolution: " (screen-resolution)))
 
   (princ rep)
   (princ)
 );_defun c:sysrep
 
+(defun windows-data ( / user windows ret)
+  ;; GET CURRENT USER
+  (setq user (getenv "USERNAME")
+        ;; (getenv "OS")
+        windows (vl-registry-read "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\" "ProductName")
+        ret (strcat "Current OS: " windows "; Username: " user))
+
+  ret
+);_defun windows-data
 
 ;; REQUIRES: POWERSHELL ACCESS
-;; @TODO DPI/ZOOM
-(defun screen-resolution ( / ws obj error message file res fn top left width height line window start end dpi)
+(defun screen-resolution ( / ws obj error message file res fn top left
+                             width height line window start end dpi)
   
   (setq file "C:\\Users\\Victor Torres\\Documents\\GitHub\\vlisputils\\resolution.txt"
         window (list 400 800))
@@ -40,6 +50,7 @@
           message (vl-catch-all-error-message obj))
   );_if
 
+  ;; THE SENT OBJECT IS ASYNC, SO THERE'S A @TODO HERE TO WAIT UNTIL FILE IS COMPLETE
   (vlax-release-object ws)
 
   ;; CHECK IF SOMETHING WAS GENERATED AND NO ERROR FOUND

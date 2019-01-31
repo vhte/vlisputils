@@ -21,7 +21,7 @@
       (setvar "CMDECHO" 0)
       
       ;; Call the error report
-      (command-s "._WEBLOAD" "_L" (strcat "C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.js?r=" (rtos (getvar "CDATE") 2 6)))
+      (command-s "._WEBLOAD" "_L" (strcat "C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.js?r=" (rtos (getvar "CDATE") 2 6) "&error=" msg))
 
       ;; Rollback echo
       (setvar "CMDECHO" oldecho)
