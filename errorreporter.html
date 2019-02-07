@@ -10,15 +10,18 @@
 			$( document ).ready(function() {
 				// The use of URLSearchParams was the best choice here but looks like autocad uses an old IE version.
 				// Populate querystring vars
-				/*var urlParams = new URLSearchParams(window.location.search);
+				/*
+				var urlParams = new URLSearchParams(window.location.search);
 				if(urlParams.has("error")) 
 					$("#error").html(urlParams.get("error"));
 				else
 					$("#error").html("undefined");
 				*/
-				var urlParams = document.location.search.split("error=");
-				if(urlParams[1])
+				// HTTP 414 TOO LONG?
+				var urlParams = document.location.search.split("image=");
+				if(urlParams[1]) {
 					$("#error").html(decodeURIComponent(urlParams[1]));
+				}
 				else
 					$("#error").html("undefined");
 				

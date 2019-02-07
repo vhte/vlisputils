@@ -9,6 +9,27 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 //https://df-prod.autocad360.com/jsapi/v3/docs/Acad_Application_showHTMLDialog@url@options.html
+var image = "NOTANIMAGE";
+function capturePreview() {		
+	var a = Acad.Application.activedocument.capturePreview(200,200).then(success,error);
+	//alert(a);
+}
+function success(encodedbmp)
+{
+	//var container = document.getElementById('imageContainer');
+	//var img = document.createElement('img');
+	var src = "data:image/bmp;base64," + encodedbmp;
+	//img.setAttribute('src', src);
+	//img.setAttribute('id', 'previewImg');
+	//container.appendChild(img);
+	image = src;
+	return 1;
+}
+
+function error() {
+	alert("error");
+}
+		
 var options = new Object();
 options["modal"] = true;
 options["initSize"] = true;
@@ -25,4 +46,12 @@ var error = document.currentScript.src.split("error=")[1];
 if(!error)
 	error = "undefined";
 
-Acad.Application.showHTMLDialog("C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.html?r=" + Math.random() + "&error=" + error, options);
+capturePreview();
+var check = function() {
+	if(image != "NOTANIMAGE")
+		Acad.Application.showHTMLDialog("C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.html?r=" + Math.random() + "&image= " + image + "&error=" + error, options);
+	else
+		setTimeout(check, 100);
+}
+
+check();

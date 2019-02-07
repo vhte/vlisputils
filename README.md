@@ -12,4 +12,4 @@ The following implementations are in the schedule:
 - **System Access, Variables and Administration**: Get access to devices, user system information, registry keys and computer administration;
 - **Error Report**: Using AutoCAD's Javascript library, send some data to a server when an error is thrown;
 - ~~**Reactors**~~: How to catch callback events from AutoCAD;
-- ~~**External Processing of Heavy Data**~~: Enabling AutoCAD run heavy data processment outside user's computer. When result is calculated, finish routine with output data;
+- ~~**External Processing of Heavy Data**~~: Enable AutoCAD to run an external program by transfering huge amounts of data. When result is calculated, finish routine with output data;
