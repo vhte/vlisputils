@@ -9,11 +9,8 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 //https://df-prod.autocad360.com/jsapi/v3/docs/Acad_Application_showHTMLDialog@url@options.html
-var image = "NOTANIMAGE";
-function capturePreview() {		
-	var a = Acad.Application.activedocument.capturePreview(200,200).then(success,error);
-	//alert(a);
-}
+var image = false;
+
 function success(encodedbmp)
 {
 	//var container = document.getElementById('imageContainer');
@@ -29,7 +26,8 @@ function success(encodedbmp)
 function error() {
 	alert("error");
 }
-		
+
+// Create an object with window properties
 var options = new Object();
 options["modal"] = true;
 options["initSize"] = true;
@@ -46,9 +44,11 @@ var error = document.currentScript.src.split("error=")[1];
 if(!error)
 	error = "undefined";
 
-capturePreview();
+// Capture preview of current drawing
+Acad.Application.activedocument.capturePreview(300,169).then(success,error);
+
 var check = function() {
-	if(image != "NOTANIMAGE")
+	if(image)
 		Acad.Application.showHTMLDialog("C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.html?r=" + Math.random() + "&image= " + image + "&error=" + error, options);
 	else
 		setTimeout(check, 100);

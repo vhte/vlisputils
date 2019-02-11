@@ -18,13 +18,12 @@
 					$("#error").html("undefined");
 				*/
 				
-
-				
-				
 				// HTTP 414 TOO LONG?
 				var urlParams = document.location.search.split("image=");
 				var img = urlParams[1].split("&error=")[0];
-				var error = urlParams[1].split("error=")[1];
+				//var dtime = 
+				//var lprompt = 
+				var error = urlParams[1].split("error=")[1].split("&")[0];
 				if(error) {
 					$("#error").html(decodeURIComponent(error));
 				}
@@ -33,8 +32,8 @@
 					
 				var image = $("<img>", {
 					"src": decodeURIComponent(img),
-					"width": "200px",
-					"height": "200px"
+					"width": "300px",
+					"height": "169px"
 				});
 
 				$("#image").html(image);
@@ -78,6 +77,7 @@
 		<form method="post" action="" id="report" name="report">
 			<span>Email: </span><input type="email" name="email" id="email" required="true"><br>
 			<span>Description: </span><textarea rows="6" cols="50" id="desc" name="desc" required></textarea>
+			<span>Screen capture:</span>
 			<p id="image"></p>
 		
 			<hr>
