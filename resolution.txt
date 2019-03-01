@@ -1,0 +1,16 @@
+
+;; THIS IS AN OUTPUT EXAMPLE OF POWERSHELL CALL AT SYSTEM.LSP
+Location : {X=0,Y=0}
+Size     : {Width=1600, Height=900}
+X        : 0
+Y        : 0
+Width    : 1600
+Height   : 900
+Left     : 0
+Top      : 0
+Right    : 1600
+Bottom   : 900
+IsEmpty  : False
+
+
+

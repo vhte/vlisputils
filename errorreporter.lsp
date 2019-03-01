@@ -18,14 +18,14 @@
       (setq date (rtos (getvar "CDATE") 2 6)
             lastprompt (getvar "LASTPROMPT"))
 
-      ;; Disable the echo to not show URL
+      ;; DISABLE THE ECHO TO NOT SHOW URL
       (setq oldecho (getvar "CMDECHO"))
       (setvar "CMDECHO" 0)
       
-      ;; Call the error report
+      ;; CALL THE ERROR REPORT
       (command-s "._WEBLOAD" "_L" (strcat "C:/Users/Victor Torres/Documents/GitHub/vlisputils/errorreporter.js?r=" (rtos (getvar "CDATE") 2 6) "&error=" msg "&date=" date "&prompt=" lastprompt))
 
-      ;; Rollback echo
+      ;; ROLLBACK ECHO
       (setvar "CMDECHO" oldecho)
 
     );_progn

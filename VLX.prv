@@ -1,0 +1,12 @@
+;;; Visual LISP make file [V1.0] VLX saved to:[GitHub/vlisputils] at:[2/27/19] 
+(PRV-DEF (:target . "VLX.vlx")
+	 (:active-x . T)
+	 (:separate-namespace . T)
+	 (:protected . T)
+	 (:load-file-list (:lsp "vlx.lsp"))
+	 (:require-file-list)
+	 (:ob-directory)
+	 (:tmp-directory)
+	 (:optimization . lsa)
+)
+;; EOF
