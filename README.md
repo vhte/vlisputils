@@ -25,17 +25,17 @@ Thinking about that, here it is an example of how to send the error message and 
 ```lisp
 (/ 0 0)
 ```
-This will open AutoCAD's help browser with the error message and a screen capture from user's drawing. It'll also ask for email and descript and, when user submits the form, it'll use some JavaScript (jQuery) to retrieve data and stay ready to send it through an Ajax request.
+This will open AutoCAD's help browser with the error message and a screen capture from user's drawing. It'll also ask for email and description. When user submits the form, it'll use some JavaScript (jQuery) to retrieve data and stay ready to send it through an Ajax request.
 
 The HTML window properties inside AutoCAD should be edited through `options[]` variable inside **errorreporter.js**. Current browser uses Chrome engine, but it seems to be a bit old.
 
 ## System Access, Variables and Administration
 Programming in AutoLISP could be strict to AutoCAD only sometimes. However this language can also create some Windows objects and read registries. Having access to command line with `(vlax-*)` functions, it could call any executable file on computer if user has enough rights *(actually this is quite dangerous...*). 
-In this section it's demonstraded:
+In this section it's demonstrated:
 - Read Windows registries and OS variables;
 - Get main screen resolution with applied DPI to know how to position DCL windows when using `(new_dialog)`;
 
-To execute code, load **system.lsp** in VisualLISP and run `SYSREP` from AutoCAD console or `(C:SYSREP)` from VisualLISP console;
+To execute code, load **system.lsp** in VisualLISP and run `SYSREP` from AutoCAD console or `(C:SYSREP)` from VisualLISP console.
 
 ## Next projects
 - **Coordinate System Properties**: How to change coordinate systems and make them interact with each other;

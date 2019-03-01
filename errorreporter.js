@@ -13,12 +13,7 @@ var image = false;
 
 function success(encodedbmp)
 {
-	//var container = document.getElementById('imageContainer');
-	//var img = document.createElement('img');
 	var src = "data:image/bmp;base64," + encodedbmp;
-	//img.setAttribute('src', src);
-	//img.setAttribute('id', 'previewImg');
-	//container.appendChild(img);
 	image = src;
 	return 1;
 }
