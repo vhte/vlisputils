@@ -1,6 +1,6 @@
 # VisualLISP Utils
 
-This repository is a collection of AutoLISP functionalities for developers. The following avaiable implementations are useful to aid development process along AutoCAD and all its interactions with Visual LISP Editor. This project is tested in **AutoCAD 2017** and VisualLISP kern VLLib: IDE v.T* Mar 03 1999, build #692 [2/6/16].
+This repository is a collection of AutoLISP functionalities for developers. The following available implementations are useful to aid development process along AutoCAD and all its interactions with Visual LISP Editor. This project is tested in **AutoCAD 2017** and VisualLISP kern VLLib: IDE v.T* Mar 03 1999, build #692 [2/6/16].
 
 ## DCL Cheat Sheet
 A complete example of DCL functionalities, its tiles and common actions. To run this program, set first `dcl_id` variable in **dcl_cheat_sheet.lsp** with the correct location of **dcl_cheat_sheet.dcl**.
@@ -30,12 +30,18 @@ This will open AutoCAD's help browser with the error message and a screen captur
 The HTML window properties inside AutoCAD should be edited through `options[]` variable inside **errorreporter.js**. Current browser uses Chrome engine, but it seems to be a bit old.
 
 ## System Access, Variables and Administration
-Programming in AutoLISP could be strict to AutoCAD only sometimes. However this language can also create some Windows objects and read registries. Having access to command line with `(vlax-*)` functions, it could call any executable file on computer if user has enough rights *(actually this is quite dangerous...*). 
+Programming in AutoLISP could be strict to AutoCAD only sometimes. However, this language can also create some Windows objects and read registries. Having access to command line with `(vlax-*)` functions, it could call any executable file on computer if user has enough rights *(actually this is quite dangerous...*). 
 In this section it's demonstrated:
 - Read Windows registries and OS variables;
 - Get main screen resolution with applied DPI to know how to position DCL windows when using `(new_dialog)`;
 
 To execute code, load **system.lsp** in VisualLISP and run `SYSREP` from AutoCAD console or `(C:SYSREP)` from VisualLISP console.
+
+## Progress bar
+
+AutoLISP routines locks whole AutoCAD while active, working as a single synchronous process. When coding a function that will take a lot of processing time, developers should give to the user some feedback about running time.
+A progress bar comes in hand when the developer knows his code will need some time to finish a task, even if it's simple like reading a file. By adding a progress bar and setting steps inside the routine, user can have an idea of how the program is handling the request.
+The progress bar in this case can be used by loading `progressbar.lsp` inside VisualLISP. Just call `(progress)` on AutoCAD/VisualLISP command line and a dialog box will be loaded with an interactive way to show the progress bar.
 
 ## Next projects
 - **Coordinate System Properties**: How to change coordinate systems and make them interact with each other;
