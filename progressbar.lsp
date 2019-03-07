@@ -1,3 +1,11 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; TITLE:    PROGRESS BAR
+;; PURPOSE:  A SIMPLE PROGRESS BAR TO UPDATE USER WHILE CODE IS RUNNING
+;; WRITTEN:  VICTOR TORRES - TALK@VICTORTORR.ES || HTTPS://GITHUB.COM/VHTE/VLISPUTILS
+;; CREATED:  2019-02-15
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; CALL THE DCL
 (defun progress ( / dialog)
   (setq dialog (load_dialog "C:/Users/Victor Torres/Documents/GitHub/vlisputils/progressbar.dcl"))
   (new_dialog "progress" dialog)
@@ -10,6 +18,7 @@
   (princ)
 );_defun progress
 
+;; SET A PERCENTAGE VALUE ON IMAGE TILE
 (defun progress-set ( / perc bsize limit actual color)
   (setq perc (atoi (get_tile "per"))
         bsize (/ (dimx_tile "ima") 10);; BLOCK SIZE
@@ -18,6 +27,7 @@
         color 5 ;; BLUE
         bg 254)
 
+  ;; LIMITING VALUES
   (if (and (>= perc 0) (<= perc 100))
     (progn
       (start_image "ima")

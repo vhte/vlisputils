@@ -19,9 +19,9 @@ The VLX application can be Loaded by using the command:
 ```
 
 ## Error report
-AutoLISP offers the `(*error*)` [function](https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2016/ENU/AutoCAD-AutoLISP/files/GUID-CF913180-17CC-43C7-B89F-3BC82FFBEFB9-htm.html) as a error handling. Although this is useful, there's no way to the developer knows that a common error is being thrown without users telling him.
+AutoLISP offers the `(*error*)` [function](https://autode.sk/2ESvhk6) as a error handling. Although this is useful, there's no way to the developer knows that a common error is being thrown without users telling him.
 
-Thinking about that, here it is an example of how to send the error message and other useful data to a remote server using [AutoCAD's Javascript library](https://df-prod.autocad360.com/jsapi/v3/GettingStart/index.html). First of all, open **errorreporter.lsp** and change your **errorreporter.js** file location when using `(command-s "._WEBLOAD")`. Load that file with VisualLISP and it'll replace your default `(*error*)` function. Then finally execute a code that will throw an error:
+Thinking about that, here it is an example of how to send the error message and other useful data to a remote server using [AutoCAD's Javascript library](http://bit.ly/2UsWBek). First of all, open **errorreporter.lsp** and change your **errorreporter.js** file location when using `(command-s "._WEBLOAD")`. Load that file with VisualLISP and it'll replace your default `(*error*)` function. Then finally execute a code that will throw an error:
 ```lisp
 (/ 0 0)
 ```
@@ -40,8 +40,27 @@ To execute code, load **system.lsp** in VisualLISP and run `SYSREP` from AutoCAD
 ## Progress bar
 
 AutoLISP routines locks whole AutoCAD while active, working as a single synchronous process. When coding a function that will take a lot of processing time, developers should give to the user some feedback about running time.
+
 A progress bar comes in hand when the developer knows his code will need some time to finish a task, even if it's simple like reading a file. By adding a progress bar and setting steps inside the routine, user can have an idea of how the program is handling the request.
+
 The progress bar in this case can be used by loading `progressbar.lsp` inside VisualLISP. Just call `(progress)` on AutoCAD/VisualLISP command line and a dialog box will be loaded with an interactive way to show the progress bar.
+
+## Security and digitally signed files
+Digitally signed applications in AutoCAD offer a security level for file authenticity. By signing LSP, FAS, DLL, VLX and many more types, user is informed by whom signed that file and if its contents remain unchanged after first signed before `APPLOAD` loads it. To learn more about how certificates help AutoCAD applications, follow this link: https://autode.sk/2SOhdf4 .
+
+To enable this feature in AutoCAD, the following files are required:
+- A digital identity issued from a valid Certificate Authority;
+- Attach Digital Signatures (AcSignApply.exe) software from AutoDesk;
+
+AcSignApply is already available from AutoCAD installation package and should be accessible from start menu.
+
+The digital identity can be bought from a valid Certificate Authority (CA) or be created by the user through a self-signed CA. In this case and for test purposes, it is used OpenSSL to create the CA and the identity that will sign the files.
+
+At the command line with OpenSSL, execute the following:
+Generate a new Certificate Authority in `ca.csr` with its private key on `ca.key`:
+```shell
+openssl req -new -newkey rsa:2048 -nodes -out ca.csr -keyout ca.key
+```
 
 ## Next projects
 - **Coordinate System Properties**: How to change coordinate systems and make them interact with each other;
@@ -49,4 +68,3 @@ The progress bar in this case can be used by loading `progressbar.lsp` inside Vi
 - **File Operations**: Wide view across file operations in LISP. RWD, filters and text searching;
 - **Reactors**: How to catch callback events from AutoCAD;
 - **External Processing of Heavy Data**: Enable AutoCAD to run an external program by transfering huge amounts of data. When result is calculated, finish routine with output data;
-- **Security and digitally signed files**: Creates self-signed certificates and sign lsp, vlx, fas and other files to comprove integrity and identity;

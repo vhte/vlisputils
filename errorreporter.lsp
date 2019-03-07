@@ -3,7 +3,7 @@
 ;; PURPOSE:  A COMPLETE EXAMPLE OF DCL FUNCTIONALITIES AND COMMON ACTIONS WITH ITS
 ;;           ELEMENTS
 ;; WRITTEN:  VICTOR TORRES - TALK@VICTORTORR.ES || HTTPS://GITHUB.COM/VHTE/VLISPUTILS
-;; CREATION: 2019-01-23
+;; CREATED:  2019-01-23
 ;; MANUAL:   https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2016/ENU/AutoCAD-AutoLISP/files/GUID-F4A63A70-EB72-4F7D-A90C-3C5ABD6864A9-htm.html
 ;;           https://knowledge.autodesk.com/search-result/caas/CloudHelp/cloudhelp/2015/ENU/AutoCAD-AutoLISP/files/GUID-620E034A-9151-427F-B6F5-B360D14DA925-htm.html
 ;; TODO:     ENABLE LOGFILEMODE
