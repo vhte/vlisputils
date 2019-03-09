@@ -56,11 +56,31 @@ AcSignApply is already available from AutoCAD installation package and should be
 
 The digital identity can be bought from a valid Certificate Authority (CA) or be created by the user through a self-signed CA. In this case and for test purposes, it is used OpenSSL to create the CA and the identity that will sign the files.
 
-At the command line with OpenSSL, execute the following:
-Generate a new Certificate Authority in `ca.csr` with its private key on `ca.key`:
+At the command line with OpenSSL, execute the following in order with required parameters (most important is when it asks for YOUR NAME, that will be the name displayed when importing certificates):
 ```shell
 openssl req -new -newkey rsa:2048 -nodes -out ca.csr -keyout ca.key
+openssl x509 -trustout -signkey ca.key -req -days 3650 -in ca.csr -out ca.pem
+openssl x509 -in ca.pem -inform PEM -out ca.cer -outform DER
 ```
+The command lines below will
+- Create a new certificate request and a new RSA 2048 bit RSA private key in `ca.key`;
+- Create root CA's self-signed X.509 digital certificate;
+- Convert Root CA certificate to `ca.cer` format. The CER format is used as public key certificate file, i.e. the file system's need to validate certificates that will be signed it itself. 
+
+Right now the root certificate authority is created. Import `ca.cer` into **"Trusted Root Certification Authorities"** to let the system sees it as a valid CA.
+The next step is to create a Digital ID. Execute the following commands in order with required parameters:
+```shell
+openssl req -new -newkey rsa:2048 -nodes -out mycert.req -keyout mycert.key
+openssl x509 -CA ca.pem -CAkey ca.key -days 365 -CAcreateserial -req -in mycert.req -out mycert.pem
+openssl pkcs12 -export -clcerts -in mycert.pem -inkey mycert.key -out mycert.p12
+```
+The command lines bellow will
+- Generate an individual key for a new certificate;
+- Use root CA to sign the new certificate for 365 days;
+- Export certificate with private key to P12 file format.
+ 
+The `mycert.p12` file is the one needed by AutoCAD to sign files. Import it in **"Personal"** folder at your local certificates.
+Now, access AcSignApply software from AutoCAD folder. It will show the Digital ID and enable the signature features.
 
 ## Next projects
 - **Coordinate System Properties**: How to change coordinate systems and make them interact with each other;
